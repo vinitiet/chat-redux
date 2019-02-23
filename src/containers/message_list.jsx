@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
-// import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// import { setMessages } from '../actions';
+import { setMessages } from '../actions';
 
 import Message from '../components/message'
 
 class MessageList extends Component {
-  // componentWillMount() {
-  //   this.props.setMessages();
-  //   console.log(this.props)
-  // };
+//   // componentWillMount() {
+//   //   this.props.setMessages();
+//   //   console.log(this.props)
+//   // };
 
-  render() {
-    <div>
-    <p>MessageList</p>
+render() {
+  return(
+    <div className="message-list">
+      <p>MessageList</p>
+      {this.props.messages.map(message => <Message message={message} key={message.content}/> )}
     </div>
-  };
+    )
+};
 }
 
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators(
-//     { setMessages: setMessages },
-//     dispatch );
-// };
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(
+    { setMessages: setMessages },
+    dispatch );
+};
 
 
 function mapStateToProps(state) {
@@ -31,4 +34,4 @@ function mapStateToProps(state) {
   };
 };
 
-export default MessageList;
+export default connect(mapStateToProps, mapDispatchToProps)(MessageList);
