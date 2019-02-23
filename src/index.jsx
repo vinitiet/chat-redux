@@ -37,7 +37,7 @@ const initialState = {
   }
   ],
   channels: [],
-  selectedChannel: '#general',
+  selectedChannel: 'general',
   currentUser: 'anon' + Math.floor(Math.random()*100)
 };
 

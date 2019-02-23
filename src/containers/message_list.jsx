@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setMessages } from '../actions';
+import { setMessages, fetchMessages } from '../actions';
 
 import Message from '../components/message'
 
 class MessageList extends Component {
 
+
   componentWillMount() {
     this.props.setMessages();
-
+    // setInterval(this.props.fetchMessages, 3000, this.props.selectedChannel);
   };
+
+  componentWillUnmount() {
+    // clearInterval()
+  }
 
   render() {
     return(
@@ -24,13 +29,16 @@ class MessageList extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { setMessages: setMessages },
+    { setMessages: setMessages,
+      fetchMessages: fetchMessages
+     },
   dispatch );
 };
 
 function mapStateToProps(state) {
   return {
-    messages: state.messages
+    messages: state.messages,
+    selectedChannel: state.selectedChannel
   };
 };
 
