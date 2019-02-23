@@ -38,7 +38,7 @@ const initialState = {
   ],
   channels: [],
   selectedChannel: '#general',
-  currentUser: window.prompt('Username?') || 'anon' + Math.floor(Math.random()*100)
+  currentUser: 'anon' + Math.floor(Math.random()*100)
 };
 
 const middlewares = applyMiddleware(logger, reduxPromise)

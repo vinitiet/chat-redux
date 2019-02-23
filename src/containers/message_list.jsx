@@ -6,27 +6,27 @@ import { setMessages } from '../actions';
 import Message from '../components/message'
 
 class MessageList extends Component {
-//   // componentWillMount() {
-//   //   this.props.setMessages();
-//   //   console.log(this.props)
-//   // };
 
-render() {
-  return(
-    <div className="message-list">
+  componentWillMount() {
+    this.props.setMessages();
+
+  };
+
+  render() {
+    return(
+      <div className="message-list">
       <p>MessageList</p>
       {this.props.messages.map(message => <Message message={message} key={message.content}/> )}
-    </div>
-    )
-};
+      </div>
+      )
+  };
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     { setMessages: setMessages },
-    dispatch );
+  dispatch );
 };
-
 
 function mapStateToProps(state) {
   return {
