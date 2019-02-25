@@ -41,7 +41,7 @@ const initialState = {
   currentUser: 'anon' + Math.floor(Math.random()*100)
 };
 
-const middlewares = applyMiddleware(logger, reduxPromise)
+const middlewares = applyMiddleware(reduxPromise, logger)
 
 
 // render an instance of the component in the DOM
