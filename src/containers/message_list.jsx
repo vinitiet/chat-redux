@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setMessages, fetchMessages } from '../actions';
 
 import Message from '../components/message'
+import MessageForm from './message_form'
 
 class MessageList extends Component {
 
@@ -19,9 +20,18 @@ class MessageList extends Component {
 
   render() {
     return(
-      <div className="message-list">
-      <p>MessageList</p>
-      {this.props.messages.map(message => <Message message={message} key={message.content}/> )}
+      <div className="channel-container">
+        <div className="channel-title">
+          <span>Channel #{this.props.selectedChannel}</span>
+        </div>
+        <div className="channel-content" ref={(list) => { this.list = list; }}>
+          {
+            this.props.messages.map((message) => {
+              return <Message key={message.id} message={message} />;
+            })
+          }
+        </div>
+        <MessageForm />
       </div>
       )
   };
