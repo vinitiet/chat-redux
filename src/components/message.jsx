@@ -23,7 +23,6 @@ const style = {
   color: intToRGB(hashCode(props.message.author))
 }
 
-console.log(style);
   return(
     <Emojify>
     <div style={style}>

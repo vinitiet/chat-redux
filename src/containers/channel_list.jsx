@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setChannels } from '../actions';
+import { setChannels, fetchMessages } from '../actions';
 
 import Channel from './channel'
 
@@ -10,6 +10,12 @@ class ChannelList extends Component {
   componentWillMount() {
     this.props.setChannels();
   };
+
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.selectedChannel !== this.props.selectedChannel) {
+  //     this.props.fetchMessages(nextProps.selectedChannel);
+  //   }
+  // }
 
 
   render() {
@@ -31,6 +37,7 @@ class ChannelList extends Component {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     { setChannels: setChannels,
+      fetchMessages: fetchMessages
      },
   dispatch );
 };

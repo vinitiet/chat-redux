@@ -10,7 +10,7 @@ class MessageList extends Component {
 
   componentWillMount() {
     this.props.setMessages(this.props.selectedChannel);
-    setInterval(this.props.fetchMessages, 1000, this.props.selectedChannel);
+    setInterval(this.props.fetchMessages, 10000, this.props.selectedChannel);
   };
 
   componentWillUnmount() {

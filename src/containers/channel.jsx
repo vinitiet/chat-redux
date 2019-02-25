@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { changeChannel } from '../actions';
+import { changeChannel, fetchMessages } from '../actions';
 
 class Channel extends Component {
   constructor(props) {
@@ -11,9 +11,9 @@ class Channel extends Component {
   }
 
   handleClick() {
-    console.log('current props:')
     console.log(this.props)
     this.props.changeChannel(this.props.channel)
+    this.props.fetchMessages(this.props.channel)
   }
   render() {
 
@@ -28,6 +28,7 @@ class Channel extends Component {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     { changeChannel: changeChannel,
+      fetchMessages: fetchMessages
      },
   dispatch );
 };
